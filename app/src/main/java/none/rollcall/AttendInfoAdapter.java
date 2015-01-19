@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -65,10 +66,14 @@ public class AttendInfoAdapter extends BaseAdapter{
                 if(m_attendList.get(k).getName() == name)
                     break;
             }
+            Calendar c = Calendar.getInstance();
+            Integer hour = c.get(Calendar.HOUR_OF_DAY);
+            Integer minute = c.get(Calendar.MINUTE);
+
             if(m_attendList.get(k).getCame()== null)
-                m_attendList.get(k).setCame("6pm");
+                m_attendList.get(k).setCame(hour.toString()+":"+minute.toString());
             else if(m_attendList.get(k).getLeft() == null)
-                m_attendList.get(k).setLeft("9pm");
+                m_attendList.get(k).setLeft(hour.toString()+":"+minute.toString());
         }});
 
         // set time came
